@@ -16,7 +16,7 @@ import { generateUsers } from "./data/mockData";
 
 const INITIAL_DATA = generateUsers(500);
 
-const columns = [
+const INITIAL_COLUMNS = [
   {
     key: "selector",
     label: "",
@@ -32,8 +32,9 @@ const columns = [
     key: "name",
     label: "Name",
     editable: true,
-    render: (_, row) => `${row.firstName} ${row.lastName}`,
+    render: (_, row) => `${row.name}`,
     width: 150,
+    sortable: true,
   },
   {
     key: "email",
@@ -85,6 +86,7 @@ const columns = [
 
 export const App = () => {
   const [data, setData] = useState(INITIAL_DATA);
+  const [columns, setColumns] = useState(INITIAL_COLUMNS);
 
   const handleEdit = (rowId, field, value) => {
     setData((prev) =>
@@ -96,6 +98,23 @@ export const App = () => {
     setData((prev) => prev.filter((row) => row.id !== rowId));
   };
 
+  const handleSort = (columnId, direction) => {
+    setData((prev) => {
+      const sorted = [...prev].sort((a, b) => {
+        return direction === "asc"
+          ? a[columnId].localeCompare(b[columnId])
+          : b[columnId].localeCompare(a[columnId]);
+      });
+      return sorted;
+    });
+
+    setColumns((prev) =>
+      prev.map((col) =>
+        col.key === columnId ? { ...col, sortDirection: direction } : col
+      )
+    );
+  };
+
   return (
     <div style={{ height: 500 }}>
       <Table
@@ -104,6 +123,7 @@ export const App = () => {
         rowHeight={40}
         onEdit={handleEdit}
         onDelete={handleDelete}
+        onSort={handleSort}
       />
     </div>
   );

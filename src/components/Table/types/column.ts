@@ -6,7 +6,8 @@ type ColumnConfig = {
   type: CellType;
   width: number;
   editable?: boolean;
-
+  sortable?: boolean;
+  sortDirection?: "asc" | "desc";
   // Custom cell renderer
   render?: (value: any, row: any) => React.ReactNode | string;
   // Custom header renderer

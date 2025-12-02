@@ -12,6 +12,7 @@ interface TableProps {
   rowHeight?: number;
   onEdit: (rowId: string, columnId: string, value: any) => void;
   onDelete: (rowId: string) => void;
+  onSort: (columnId: string, direction: "asc" | "desc") => void;
 }
 
 export const Table = ({
@@ -20,6 +21,7 @@ export const Table = ({
   rowHeight = 40,
   onEdit,
   onDelete,
+  onSort,
 }: TableProps) => {
   const [wrapperRef, { height: containerHeight }] =
     useMeasure<HTMLDivElement>();
@@ -52,7 +54,21 @@ export const Table = ({
         />
       );
     }
-    return col.label;
+    return (
+      <div className="flex gap-2">
+        {col.label}
+
+        {col.sortable && (
+          <button
+            onClick={() => {
+              onSort(col.key, col.sortDirection === "asc" ? "desc" : "asc");
+            }}
+          >
+            {col.sortDirection === "asc" ? "▲" : "▼"}
+          </button>
+        )}
+      </div>
+    );
   };
 
   return (
