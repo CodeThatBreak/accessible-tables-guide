@@ -1,149 +1,23 @@
-* {
-  box-sizing: border-box;
+@import "tailwindcss";
+
+/* Screen Reader Only utility */
+@utility sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0a0a0a;
-  color: #e8e8e8;
-  line-height: 1.6;
-}
-
-.app {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-/* Header */
-.header {
-  margin-bottom: 2rem;
-}
-
-.header h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.subtitle {
-  color: #888;
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.subtitle code {
-  background: #252525;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  color: #6366f1;
-  font-family: 'Fira Code', monospace;
-}
-
-/* Sections */
-section {
-  margin-bottom: 2.5rem;
-}
-
-h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #fff;
-  margin: 0 0 1rem 0;
-}
-
-/* Problems List */
-.problems-section {
-  background: rgba(239, 68, 68, 0.05);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-.problems-section h2 {
-  color: #ef4444;
-}
-
-.problems-list {
-  margin: 0;
-  padding-left: 1.5rem;
-}
-
-.problems-list li {
-  margin-bottom: 0.75rem;
-  color: #ccc;
-}
-
-.problems-list strong {
-  color: #ef4444;
-}
-
-/* Demo Section */
-.demo-section {
-  background: #111;
-  border: 1px solid #2a2a2a;
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-.demo-instruction {
-  background: #1a1a1a;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  color: #888;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  border-left: 3px solid #6366f1;
-}
-
-/* Next Section */
-.next-section {
-  background: rgba(99, 102, 241, 0.05);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-.next-section h2 {
-  color: #6366f1;
-}
-
-.next-section ul {
-  margin: 0;
-  padding-left: 1.5rem;
-}
-
-.next-section li {
-  margin-bottom: 0.5rem;
-  color: #ccc;
-}
-
-.next-section code {
-  background: #252525;
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-  color: #a855f7;
-  font-size: 0.85rem;
-}
-
-/* Branch Indicator */
-.branch-indicator {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  color: #888;
-}
-
-.branch-indicator code {
-  color: #6366f1;
+/* Base styles */
+@layer base {
+  body {
+    background-color: #0a0a0a;
+    color: #e5e5e5;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
 }
